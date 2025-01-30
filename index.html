@@ -59,6 +59,15 @@
             border: 2px solid #333;
             border-radius: 10px;
         }
+        .algorithm-list {
+            display: flex;
+            flex-direction: column;
+        }
+        .algorithm-list p {
+            margin: 0;
+            padding: 4px 0;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -129,7 +138,14 @@
                     imgCell.appendChild(img);
                     
                     let algCell = newRow.insertCell(1);
-                    algCell.textContent = alg.algorithmsList.join("\n");
+                    let algContainer = document.createElement("div");
+                    algContainer.classList.add("algorithm-list");
+                    alg.algorithmsList.forEach(algText => {
+                        let p = document.createElement("p");
+                        p.textContent = algText;
+                        algContainer.appendChild(p);
+                    });
+                    algCell.appendChild(algContainer);
                     
                     let caseCell = newRow.insertCell(2);
                     caseCell.textContent = alg.name;
@@ -137,8 +153,63 @@
         }
         
         // Example usage:
-        addAlgorithm("3x3", "3x3/OLL/OLL_1.png", ["R U R' U'", "U R U' R'"], "Example Case", "OLL");
-        addAlgorithm("2x2", "2x2/CLL/CLL_SUNE_1.png", ["R2 U' R' U' R U R U R U' R"], "Example Case", "CLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_1.png", ["R U2' R2' F R F' U2' (R' F R F')"], "OLL 1", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_2.png", ["y f (U R U' R') S' (U R U' R') F'"], "OLL 2", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_3.png", ["f (U R U' R') S' R' F' R (U R U' R')"], "OLL 3", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_4.png", ["(R U R' U') R' F R S (R U R' U') f'"], "OLL 4", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_5.png", ["R' F2 r U R' F R","l' U2 L U L' U l","y2 r' U2 R U R' U r"], "OLL 5", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_6.png", ["r U2 R' U' R' U' R U' r'"], "OLL 6", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_7.png", ["r U R' U R U2 r'","L' U2 L U2 L F' L' F"], "OLL 7", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_8.png", ["r U R' U R U2 r'","R U2 R' U2 R' F R F'"], "OLL 8", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_9.png", ["(R U R' U') R' F R2 U R' U' F'"], "OLL 9", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_10.png", ["R U R' U (R' F R F') R U2' R'","y2 L' U' L U L F' L2' U' L U F"], "OLL 10", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_11.png", ["M' U2 (R U R' U R U2 R') U' M"], "OLL 11", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_12.png", ["M U2 (R' U' R U' R' U2' R) U M'", "M' U2 (L' U' L U' L' U2 L) U M"], "OLL 12", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_13.png", ["F U R U' R2' F' R (U R U' R')"], "OLL 13", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_14.png", ["F' (U' L' U) L2 F L' (U' L' U L)","f (U R U' R') S' (U R U' R') (U R U' R') R' F' R (U R U' R')"], "OLL 14", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_15.png", ["R' U2' R U R' F (U R U' R') F' R","l' U' l (L' U' L U) l' U l"], "OLL 15", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_16.png", ["r U r' (R U R' U') r U' r'"], "OLL 16", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_17.png", ["(F R' F' R) U S' (R U' R') S"], "OLL 17", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_18.png", ["y R U2' R2' (F R F') U2' M' U R U' r'", "(F R' F' R) U2 (F R' F' R) U' (R U' R')"], "OLL 18", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_19.png", ["y S' (R U R') S U' (R' F R F')"], "OLL 19", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_20.png", ["r (U R' U') M2' (U R U' R') U' M'"], "OLL 20", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_21.png", ["R U2 R' U' (R U R' U') R U' R'","y R U R' (U R U' R') U R U2 R'","F (U R U' R') (U R U' R') (U R U' R') F'","F (R U R' U') (R U R' U') (R U R' U') F'"], "OLL 21", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_22.png", ["R' U2' R2 U R2' U R2 U2' R'","R U2' R2 U' R2' U' R2 U2' R"], "OLL 22", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_23.png", ["R2' D' R U2 R' D R U2 R","R2' D' (R U R') D (R U R U') (R' U' R)","y2 R2 D R' U2 R D' R' U2' R'"], "OLL 23", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_24.png", ["r U R' U' r' F R F'", "y' x' (R U R') D (R U' R')"], "OLL 24", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_25.png", ["y' (F R' F') r (U R U') r'", "y2 R' U2 (R' D' R) U2 R' D R2"], "OLL 25", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_26.png", ["R U2 R' U' R U' R'", "y R' U' R U' R' U2 R"], "OLL 26", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_27.png", ["R U R' U R U2 R'"], "OLL 27", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_28.png", ["r (U R' U') M (U R U' R')"], "OLL 28", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_29.png", ["(R U R' U') (R U' R') F' U' F (R U R')"], "OLL 29", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_30.png", ["U2 f (R U R' U') S' R' F' r (U R U') r'"], "OLL 30", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_31.png", ["R' U' F (U R U' R') F' R"], "OLL 31", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_32.png", ["y2 S (R U R' U') R' F R f'","L U F' (U' L' U L) F L'"], "OLL 32", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_33.png", ["R U R' U' R' F R F'"], "OLL 33", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_34.png", ["y2 F (R U R' U') R' F' r U R U' r'","(f R f') U' r' (U' R U) M'"], "OLL 34", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_35.png", ["R U2' R2' F R F' R U2' R'"], "OLL 35", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_36.png", ["L' U' L (U' L' U L) U (L F' L' F)"], "OLL 36", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_37.png", ["(F R' F' R) (U R U' R')", "F R U' R' U' R U R' F'"], "OLL 37", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_38.png", ["(R U R' U) R U' R' U' (R' F R F')"], "OLL 38", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_39.png", [""], "OLL 39", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_40.png", [""], "OLL 40", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_41.png", [""], "OLL 41", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_42.png", [""], "OLL 42", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_43.png", [""], "OLL 43", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_44.png", [""], "OLL 44", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_45.png", [""], "OLL 45", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_46.png", [""], "OLL 46", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_47.png", [""], "OLL 47", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_48.png", [""], "OLL 48", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_49.png", [""], "OLL 49", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_50.png", [""], "OLL 50", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_51.png", [""], "OLL 51", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_52.png", [""], "OLL 52", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_53.png", [""], "OLL 53", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_54.png", [""], "OLL 54", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_55.png", [""], "OLL 55", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_56.png", [""], "OLL 56", "OLL");
+        addAlgorithm("3x3", "3x3/OLL/OLL_57.png", [""], "OLL 57", "OLL");
         
         updateFilters();
     </script>
