@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luca's Algorithms</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        select, .filter-buttons button {
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #333;
+            border-radius: 5px;
+            background-color: white;
+            margin: 5px;
+            cursor: pointer;
+        }
+        .filter-buttons {
+            margin-bottom: 20px;
+        }
+        table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            border: 2px solid #333;
+            padding: 12px;
+            text-align: center;
+            font-size: 16px;
+        }
+        th {
+            background-color: #555;
+            color: white;
+            font-weight: bold;
+        }
+        td {
+            white-space: pre-line;
+        }
+        img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            display: block;
+            margin: 0 auto;
+            border: 2px solid #333;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Luca's Algorithms</h1>
+    <select id="categorySelect" onchange="updateFilters()">
+        <option value="3x3">3x3</option>
+        <option value="2x2">2x2</option>
+    </select>
+    <div class="filter-buttons" id="filterButtons">
+    </div>
+    <table id="algorithmTable">
+        <thead>
+            <tr>
+                <th>Case</th>
+                <th>Algorithm</th>
+                <th>Case Name</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script>
+        const filters = {
+            "3x3": ["OLL", "PLL", "COLL"],
+            "2x2": ["CLL", "EG-1", "EG-2"]
+        };
+        let selectedCategory = "3x3";
+        let selectedFilter = "OLL";
+        
+        function updateFilters() {
+            selectedCategory = document.getElementById("categorySelect").value;
+            const filterContainer = document.getElementById("filterButtons");
+            filterContainer.innerHTML = "";
+            
+            filters[selectedCategory].forEach(filter => {
+                const button = document.createElement("button");
+                button.textContent = filter;
+                button.onclick = () => {
+                    selectedFilter = filter;
+                    displayAlgorithms();
+                };
+                filterContainer.appendChild(button);
+            });
+            
+            selectedFilter = filters[selectedCategory][0];
+            displayAlgorithms();
+        }
+        
+        let algorithms = [];
+        
+        function addAlgorithm(category, imageSource, algorithmsList, name, type) {
+            algorithms.push({ category, imageSource, algorithmsList, name, type });
+            displayAlgorithms();
+        }
+        
+        function displayAlgorithms() {
+            let table = document.getElementById("algorithmTable").getElementsByTagName('tbody')[0];
+            table.innerHTML = "";
+            
+            algorithms.filter(alg => alg.category === selectedCategory && alg.type === selectedFilter)
+                .forEach(alg => {
+                    let newRow = table.insertRow();
+                    
+                    let imgCell = newRow.insertCell(0);
+                    let img = document.createElement("img");
+                    img.src = alg.imageSource;
+                    img.alt = alg.name;
+                    imgCell.appendChild(img);
+                    
+                    let algCell = newRow.insertCell(1);
+                    algCell.textContent = alg.algorithmsList.join("\n");
+                    
+                    let caseCell = newRow.insertCell(2);
+                    caseCell.textContent = alg.name;
+                });
+        }
+        
+        // Example usage:
+        addAlgorithm("3x3", "3x3/OLL/OLL_1.png", ["R U R' U'", "U R U' R'"], "Example Case", "OLL");
+        addAlgorithm("2x2", "2x2/CLL/CLL_SUNE_1.png", ["R2 U' R' U' R U R U R U' R"], "Example Case", "CLL");
+        
+        updateFilters();
+    </script>
+</body>
+</html>
