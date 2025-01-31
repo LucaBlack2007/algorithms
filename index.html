@@ -75,6 +75,7 @@
     <select id="categorySelect" onchange="updateFilters()">
         <option value="3x3">3x3</option>
         <option value="2x2">2x2</option>
+        <option value="Misc">Misc</option>
     </select>
     <div class="filter-buttons" id="filterButtons">
     </div>
@@ -92,7 +93,8 @@
     <script>
         const filters = {
             "3x3": ["PLL", "OLL", "COLL"],
-            "2x2": ["CLL", "EG-1", "EG-2"]
+            "2x2": ["CLL", "EG-1", "EG-2"],
+            "Misc": ["Misc. Algs"]
         };
         let selectedCategory = "3x3";
         let selectedFilter = "OLL";
@@ -224,15 +226,17 @@
         addAlgorithm("3x3", "3x3/PLL/PLL_Jb.png", ["R U R' F' (R U R' U') R' F R2 U' R'"], "Jb", "PLL");
         addAlgorithm("3x3", "3x3/PLL/PLL_Na.png", ["(R U R' U) R U R' F' (R U R' U') R' F R2 U' R' U2 R U' R'"], "Na", "PLL");
         addAlgorithm("3x3", "3x3/PLL/PLL_Nb.png", ["r' D' F r U' r' F' D r2 U r' U' r' F r F'"], "Nb", "PLL");
-        addAlgorithm("3x3", "3x3/PLL/PLL_Ra.png", [""], "Ra", "PLL");
-        addAlgorithm("3x3", "3x3/PLL/PLL_Rb.png", [""], "Rb", "PLL");
-        addAlgorithm("3x3", "3x3/PLL/PLL_T.png", [""], "T", "PLL");
-        addAlgorithm("3x3", "3x3/PLL/PLL_Ua.png", [""], "Ua", "PLL");
-        addAlgorithm("3x3", "3x3/PLL/PLL_Ub.png", [""], "Ub", "PLL");
-        addAlgorithm("3x3", "3x3/PLL/PLL_V.png", [""], "V", "PLL");
-        addAlgorithm("3x3", "3x3/PLL/PLL_Y.png", [""], "Y", "PLL");
-        addAlgorithm("3x3", "3x3/PLL/PLL_Z.png", [""], "Z", "PLL");
+        addAlgorithm("3x3", "3x3/PLL/PLL_Ra.png", ["(R U R') F' R U2 R' U2' (R' F R) U R U2 R'", "(R U' R' U') R U R D R' U' R D' R' U2 R'"], "Ra", "PLL");
+        addAlgorithm("3x3", "3x3/PLL/PLL_Rb.png", ["R2' F R (U R U' R') F' R (U2' R' U2 R)"], "Rb", "PLL");
+        addAlgorithm("3x3", "3x3/PLL/PLL_T.png", ["R U R' U' R' F R2 U' R' U' R U R' F'"], "T", "PLL");
+        addAlgorithm("3x3", "3x3/PLL/PLL_Ua.png", ["R U' R U R U R U' R' U' R2", "y2 R2 U' (R' U' R U) R U R U' R","M2' U M U2 M' U M2'", "y2 M2' U M' U2 M U M2'", ""], "Ua", "PLL");
+        addAlgorithm("3x3", "3x3/PLL/PLL_Ub.png", ["R2' U (R U R' U') R3/R' U' R' U R'", "y2 R' U R' U' R3 U' R' U R U R2'", "M2' U' M U2 M' U' M2'", "y2 M2' U' M' U2 M U' M2'"], "Ub", "PLL");
+        addAlgorithm("3x3", "3x3/PLL/PLL_V.png", ["R U' R U R' D R D' R (U' D) R2' U R2 D' R2'","R' U R' U' y R' F' R2 U' R' U R' F R F"], "V", "PLL");
+        addAlgorithm("3x3", "3x3/PLL/PLL_Y.png", ["F R U' R' U' R U R' F' R U R' U' R' F R F'"], "Y", "PLL");
+        addAlgorithm("3x3", "3x3/PLL/PLL_Z.png", ["y M2' U M2' U M' U2 M2' U2 M'", "M' U M2' U M2' U M' U2 M2'", "R U R2' F' R U R U R' U2' R' F R U (R U2' R')"], "Z", "PLL");
 
+        addAlgorithm("Misc", "Misc/PureDiagFlip.png", ["r U R' U' r' U2 R U R U' R2 U2 R"], "Pure Diag Flip", "Misc. Algs");
+        addAlgorithm("Misc", "Misc/PureOppFlip.png", ["M' U M' U M' U2 M U M U M"], "Pure Diag Flip", "Misc. Algs");
         
         updateFilters();
     </script>
